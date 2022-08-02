@@ -40,6 +40,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
         JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(employees);
         Map<String, Object> parameters = new HashMap<>();
+        parameters.put("dataSource",dataSource);
         parameters.put("createdBy", "Java Techie");
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
         if (reportFormat.equalsIgnoreCase("html")) {
